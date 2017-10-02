@@ -1,0 +1,1 @@
+./table-to-rows-mysql.sh input/public_procurement_tables | ./columns-to-x-entity-mysql.sh product | ./run-mysql.sh | grep '^SELECT\|^[0-9]' | sed -e 's/SELECT COUNT(\*) \(.*\)/\1/' | awk '{FS="\n";RS="FROM ";OFS=" ";ORS="\n";};{$1=$1;print;}'

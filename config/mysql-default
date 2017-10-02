@@ -1,0 +1,13 @@
+[[ -z ${PS_MYSQL_USER} ]] && {
+
+source config/default
+source config/mysql-safe
+
+PS_MYSQL_HOST=localhost
+PS_MYSQL_DATABASE=prestashop_procurement
+PS_MYSQL_COMMANDS_FILE=config/mysql-commands-default
+PS_MYSQL_LOG_FILE="${PS_LOG_DIR}/mysql.log"
+
+> "${PS_MYSQL_LOG_FILE}"
+
+}

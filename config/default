@@ -1,0 +1,21 @@
+[[ -z ${PS_INPUT_FILE} ]] && {
+
+PS_STDIN='/dev/stdin'
+
+PS_INPUT_FILE=${1:-/dev/stdin}
+PS_OUTPUT_DIR=output
+
+[[ ${PS_INPUT_FILE} == ${PS_STDIN} ]] && {
+    PS_OUTPUT_FILE="${PS_OUTPUT_DIR}/$0.out"
+} || {
+    PS_OUTPUT_FILE="${PS_OUTPUT_DIR}/${PS_INPUT_FILE##*/}.out"
+}
+
+PS_TMP_FILE=${PS_OUTPUT_FILE}.tmp
+PS_LOG_DIR=log
+
+mkdir -p "${PS_OUTPUT_DIR}"
+> "${PS_TMP_FILE}"
+mkdir -p "${PS_LOG_DIR}"
+
+}
